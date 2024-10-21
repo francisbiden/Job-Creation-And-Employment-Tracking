@@ -1,0 +1,130 @@
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$background-color: #f8f9fa;
+$font-family: 'Roboto', sans-serif;
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin responsive-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+@mixin button-styles($color) {
+    background-color: $color;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: darken($color, 10%);
+    }
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    background-color: $background-color;
+}
+
+header {
+    position:sticky;
+    top: 0; left: 0; right: 0;
+   
+    padding: 1.5rem 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    background: $primary-color;
+
+    nav {
+        @include flex-center;
+       
+        a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+
+             
+            &:hover {
+                background-color: #ffa500; // Orange background on hover
+                color: #fff; // Text color change when hovering
+            }
+
+
+        }
+    }
+}
+
+.container {
+    @include responsive-container;
+    padding:70px 10px 10px  ;
+}
+
+h1, h2, h3 {
+    color: $primary-color;
+}
+
+button {
+    @include button-styles($primary-color);
+}
+
+.form-group {
+    margin-bottom: 15px;
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+}
+
+footer{
+    font-size:1 rem;
+    position: fixed;
+    bottom: 0.4rem;
+    right: 1rem;
+    text-align: right;
+    padding: 1rem;
+    color: set-text-color($primary-color);
+}
+
+@media (max-width: 768px) {
+    header nav a {
+        font-size: 14px;
+        margin: 0 10px;
+    }
+
+    .container {
+        padding: 60px 10px 10px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+}

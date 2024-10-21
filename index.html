@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dist/css/main.css">
+    <title>Get Hired According to your skills</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#employers">Employers</a>
+            <a href="#jobs">Jobs</a>
+            <a href="#candidates">Candidates</a>
+            <a href="#login">Login</a>
+           
+        </nav>
+    </header>
+
+    <SECTION id="home">
+        <div class="container">
+            <h1>Welcome to The Opportunity Portal</h1>
+            <p>Connecting job seekers with employers!</p>
+            <a href="#add-employer"><button>Post a Job</button></a>
+            <a href="#add-candidate"><button>Register as a Candidate</button></a>
+        </div>
+   
+    </SECTION>
+
+    <SECTION id="about">
+        
+        <div class="container">
+            <h1>About Us</h1>
+            <p>The Opportunity Portal is a platform designed to connect job seekers with employers. Whether you're looking for a new opportunity or trying to find the right talent, our portal provides an easy-to-use interface for both parties to connect.</p>
+        </div>
+
+    </SECTION>
+
+    <SECTION id="employers">
+
+        <div class="container" >
+            <h1>Register as an Employer</h1>
+            <form action="submit-employer.php" method="POST">
+                <div class="form-group">
+                    <label for="company_name">Company Name</label>
+                    <input type="text" id="company_name" name="company_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact_email">Contact Email</label>
+                    <input type="email" id="contact_email" name="contact_email" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+    </SECTION>
+
+    <SECTION id="jobs">
+
+        <div class="container">
+            <h1>Job Listings</h1>
+            <ul>
+                <li>Software Engineer - Company A - $100,000/year</li>
+                <li>Data Scientist - Company B - $90,000/year</li>
+                <li>Marketing Manager - Company C - $80,000/year</li>
+                <!-- Add dynamically through backend -->
+            </ul>
+        </div>
+    <SECTION>
+
+    <SECTION id="add-employer">
+        <div class="container">
+            <h1>Post a Job</h1>
+            <form action="submit-job.php" method="POST">
+                <div class="form-group">
+                    <label for="employer_id">Employer ID</label>
+                    <input type="number" id="employer_id" name="employer_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="job_title">Job Title</label>
+                    <input type="text" id="job_title" name="job_title" required>
+                </div>
+                <div class="form-group">
+                    <label for="job_description">Job Description</label>
+                    <textarea id="job_description" name="job_description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="salary">Salary</label>
+                    <input type="number" id="salary" name="salary" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+                <button type="submit">Post Job</button>
+            </form>
+        </div>
+
+    </SECTION>
+    <SECTION id="candidates">
+
+        <div class="container">
+            <h1>Candidate Profiles</h1>
+            <ul>
+                <li>John Doe - Skills: JavaScript, React</li>
+                <li>Jane Smith - Skills: Python, Data Science</li>
+                <li>Chris Evans - Skills: UI/UX Design</li>
+                <!-- Add dynamically through backend -->
+            </ul>
+        </div>
+    </SECTION>
+
+    <SECTION id="add-candidate">
+
+
+    <div class="container">
+        <h1>Register as a Candidate</h1>
+        <form action="submit-candidate.php" method="POST">
+            <div class="form-group">
+                <label for="full_name">Full Name</label>
+                <input type="text" id="full_name" name="full_name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                <input type="text" id="phone_number" name="phone_number" required>
+            </div>
+            <div class="form-group">
+                <label for="skills">Skills</label>
+                <textarea id="skills" name="skills" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    </SECTION>
+
+    <SECTION id="jobs">
+
+        <div class="container">
+            <h1>Apply for a Job</h1>
+            <form action="submit-application.php" method="POST">
+                <div class="form-group">
+                    <label for="candidate_id">Candidate ID</label>
+                    <input type="number" id="candidate_id" name="candidate_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="job_id">Job ID</label>
+                    <input type="number" id="job_id" name="job_id" required>
+                </div>
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+    </SECTION>
+
+    <SECTION id="canditates">
+
+        <div class="container">
+            <h1>Track Your Application</h1>
+            <form action="track-application-status.php" method="GET">
+                <div class="form-group">
+                    <label for="candidate_id">Candidate ID</label>
+                    <input type="number" id="candidate_id" name="candidate_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="application_id">Application ID</label>
+                    <input type="number" id="application_id" name="application_id" required>
+                </div>
+                <button type="submit">Track Application</button>
+            </form>
+        </div>
+    </SECTION>
+
+    <SECTION id="login">
+
+        <div class="container">
+            <h1>Login</h1>
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="user_type">Login as</label>
+                    <select id="user_type" name="user_type" required>
+                        <option value="">-- Select User Type --</option>
+                        <option value="employer">Employer</option>
+                        <option value="candidate">Candidate</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#add-employer">Register as Employer</a> or <a href="#add-candidate">Register as Candidate</a></p>
+        </div>
+    </SECTION>
+
+    <footer>&copy;Copyright 2024</footer>
+</body>
+<script src="script.js"></script>
+</html>
