@@ -36,7 +36,7 @@ exports.registerUser = async (req,res) => {
 }
 
 
-exports.loginUser = async () => {
+exports.loginUser = async () => { 
     // check if the user exists
     const [rows] = await db.execute('SELECT * FROM users WHERE email = ?', [email] )
     if(rows.length === 0){

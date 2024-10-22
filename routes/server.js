@@ -4,9 +4,17 @@ const session = require ('express-session')
 const mysql = require('mysql2/promise')
 require('dotenv').config()
 
-const authRoutes = require ('auth')
+const db = require('../config/db')
+const authRoutes = require('../routes/auth') 
+
 //initialize the express app
 const app = express()
+
+
+//set-up middleware
+app.use(express.json())
+app.use(express.static(path.join(__dirname, '/')))
+app.use(express.urlencoded({extended:true}))
 
 //create a connection to the DB server
 const pool = mysql.createPool({
@@ -91,6 +99,23 @@ app.get('/destroy',(request,response) => {
         }
     })
 })
+
+
+// POST route to handle form submission
+app.post('/submit-login', (req, res) => {
+    const { full_name, email, phone_number, experience, location } = req.body;
+  
+    // Insert form data into MySQL database
+    const query = 'INSERT INTO candidates (name, email, phone, experience, location) VALUES (?, ?, ?, ?, ?)';
+  
+    db.query(query, [full_name, email, phone_number, experience, location], (err, result) => {
+      if (err) {
+        console.error('Error inserting data:', err);
+        return res.status(500).json({ error: 'Database insertion error' });
+      }
+      res.json({ message: 'Form data inserted successfully', data: result });
+    });
+  });
 
 //start the server
 app.listen(3000, () => {
