@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Dashboard - The Opportunity Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Employer Dashboard</h1>
+        <nav>
+
+            <a href="index.html">Home</a>
+            <a href="about.html">about Us</a>
+            <a href="employer-registration.html">Register</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <section>
+        <h2>Post a New Job Listing</h2>
+        <form id="jobForm">
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" id="jobTitle" name="jobTitle" required>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+            <label for="requirements">Requirements:</label>
+            <textarea id="requirements" name="requirements" required></textarea>
+            <label for="salary">Salary:</label>
+            <input type="number" id="salary" name="salary" required>
+            <button type="submit">Post Job</button>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById('jobForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = {
+                jobTitle: document.getElementById('jobTitle').value,
+                description: document.getElementById('description').value,
+                requirements: document.getElementById('requirements').value,
+                salary: document.getElementById('salary').value
+            };
+            try {
+                const response = await fetch('/post-job', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                if (response.ok) {
+                    alert('Job posted successfully');
+                } else {
+                    alert('Error posting job');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,10 +1,20 @@
 {
+  "name": "job-creation-and-employment-tracking",
+  "version": "1.0.0",
+  "description": "🎉 #The Opportunity Portal: Job Creation and Employment Tracking\r The Opportunity Portal is a full-stack web application designed to connect job seekers with employers. It allows employers to post job listings, candidates to apply for jobs, and track the status of applications. The project uses a MySQL database and is powered by Node.js on the backend. Below are detailed steps to set up and run this project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^16.4.5",
+    "bcrypt": "^5.1.1",
     "express": "^4.21.1",
     "express-mysql-session": "^3.0.3",
     "express-session": "^1.18.1",
-    "mysql2": "^3.11.3"
+    "mysql2": "^3.11.3",
+    "nodemon": "^3.1.7"
   }
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Job - The Opportunity Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Apply for Job</h1>
+        <nav>
+            
+            <a href="job-listings.html">Job listings</a>
+            <a href="job-details.html">Job Details</a>
+            <a href="apply.html"> Apply Job</a>
+        </nav>
+    </header>
+    <form id="applicationForm" enctype="multipart/form-data">
+        <label for="applicantName">Name:</label>
+        <input type="text" id="applicantName" name="applicantName" required>
+        <label for="resume">Resume:</label>
+        <input type="file" id="resume" name="resume" required>
+        <button type="submit">Submit Application</button>
+    </form>
+
+    <script>
+        document.getElementById('applicationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('applicantName', document.getElementById('applicantName').value);
+            formData.append('resume', document.getElementById('resume').files[0]);
+
+            try {
+                const response = await fetch('/apply', {
+                    method: 'POST',
+                    body: formData
+                });
+                if (response.ok) {
+                    alert('Application submitted successfully');
+                } else {
+                    alert('Error submitting application');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

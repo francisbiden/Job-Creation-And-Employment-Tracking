@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Registration - The Opportunity Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Candidate Registration</h1>
+        <nav><a href="index.html">Home</a></nav>
+    </header>
+    <form id="candidateForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="contact">Contact:</label>
+        <input type="email" id="contact" name="contact" required>
+        <label for="skills">Skills:</label>
+        <textarea id="skills" name="skills"></textarea>
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        document.getElementById('candidateForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = {
+                name: document.getElementById('name').value,
+                contact: document.getElementById('contact').value,
+                skills: document.getElementById('skills').value
+            };
+            try {
+                const response = await fetch('/register-candidate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                if (response.ok) {
+                    alert('Candidate registered successfully');
+                } else {
+                    alert('Error registering candidate');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

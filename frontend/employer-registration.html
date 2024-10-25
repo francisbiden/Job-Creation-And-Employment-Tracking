@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Registration - The Opportunity Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Employer Registration</h1>
+        <nav><a href="index.html">Home</a></nav>
+    </header>
+    <form id="employerForm">
+        <label for="companyName">Company Name:</label>
+        <input type="text" id="companyName" name="companyName" required>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+        <label for="industry">Industry:</label>
+        <input type="text" id="industry" name="industry" required>
+        <label for="contactEmail">Contact Email:</label>
+        <input type="email" id="contactEmail" name="contactEmail" required>
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        document.getElementById('employerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = {
+                companyName: document.getElementById('companyName').value,
+                location: document.getElementById('location').value,
+                industry: document.getElementById('industry').value,
+                contactEmail: document.getElementById('contactEmail').value
+            };
+            try {
+                const response = await fetch('/register-employer', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                if (response.ok) {
+                    alert('Employer registered successfully');
+                } else {
+                    alert('Error registering employer');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
