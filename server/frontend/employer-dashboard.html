@@ -42,7 +42,7 @@
                 salary: document.getElementById('salary').value
             };
             try {
-                const response = await fetch('/post-job', {
+                const response = await fetch('auth/post-job', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

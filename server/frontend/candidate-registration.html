@@ -30,7 +30,7 @@
                 skills: document.getElementById('skills').value
             };
             try {
-                const response = await fetch('/register-candidate', {
+                const response = await fetch('/auth/register-candidate', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

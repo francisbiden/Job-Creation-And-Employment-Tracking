@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
+const path = require ('path')
 const db = require('./config/db'); // Your database connection pool
 
 const app = express();
@@ -24,6 +25,19 @@ app.use(session({
 }));
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'frontend')))
+//app.use(express.urlencoded({extended:true}))
+
+
+// Import routes
+const authRoutes = require('./auth');
+
+// Use the imported routes with a base path
+app.use('/auth', authRoutes);
+
+/*
+// Define a root route to handle GET requests to "/"
+//routes
 
 // Example route to set session
 app.post('/login', (req, res) => {
@@ -40,8 +54,17 @@ app.get('/profile', (req, res) => {
         res.status(401).send('Unauthorized');
     }
 });
+*/
 
-const PORT = process.env.PORT || 3000;
+app.get('/',(req,res) => {
+    res.sendFile(path.join(__dirname,'frontend','index.html'))
+})
+app.get('/login',(req,res) => {
+    res.sendFile(path.join(__dirname,'frontend','login.html'))
+})
+
+
+const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

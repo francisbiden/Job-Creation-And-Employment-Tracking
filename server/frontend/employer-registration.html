@@ -33,7 +33,7 @@
                 contactEmail: document.getElementById('contactEmail').value
             };
             try {
-                const response = await fetch('/register-employer', {
+                const response = await fetch('/auth/register-employer', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
