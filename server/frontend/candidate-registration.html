@@ -12,22 +12,36 @@
         <nav><a href="index.html">Home</a></nav>
     </header>
     <form id="candidateForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="contact">Contact:</label>
-        <input type="email" id="contact" name="contact" required>
-        <label for="skills">Skills:</label>
-        <textarea id="skills" name="skills"></textarea>
+        <h2>Candidate Registration</h2>
+        
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        <label for="resumeUrl">Resume URL:</label>
+        <input type="url" id="resumeUrl" name="resumeUrl" required>
+        
         <button type="submit">Register</button>
+
     </form>
 
     <script>
         document.getElementById('candidateForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const formData = {
-                name: document.getElementById('name').value,
-                contact: document.getElementById('contact').value,
-                skills: document.getElementById('skills').value
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                resumeUrl: document.getElementById('resumeUrl').value
             };
             try {
                 const response = await fetch('/auth/register-candidate', {

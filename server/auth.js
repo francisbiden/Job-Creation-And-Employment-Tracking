@@ -5,10 +5,10 @@ const authController = require('./authController');
 
 router.post('/register-employer', authController.registerEmployer);
 router.get('/employers', authController.getEmployers);
-//router.post('/post-job', authController.postJob);
-//router.get('/jobs', authController.getJobs);
+router.post('/post-job', authController.postJob);
+router.get('/jobs', authController.getJobs);
 
-router.post('/register', authController.registerCandidate);
+router.post('/register-candidate', authController.registerCandidate);
 router.get('/', authController.getCandidates);
 router.get('/:id', authController.getCandidateById);
 router.put('/:id', authController.updateCandidate);

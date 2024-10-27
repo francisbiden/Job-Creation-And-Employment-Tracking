@@ -59,9 +59,6 @@ app.get('/profile', (req, res) => {
 app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'frontend','index.html'))
 })
-app.get('/login',(req,res) => {
-    res.sendFile(path.join(__dirname,'frontend','login.html'))
-})
 
 
 const PORT = 3000;
