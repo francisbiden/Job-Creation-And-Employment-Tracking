@@ -142,80 +142,34 @@ exports.getEmployers = async (req, res) => {
 };
 
 
-//postjob
-const Job= require('./models/postjob');
 
-exports.postJob = async (req, res) => {
+//jobs
+const Job = require('./models/jobs');
+
+exports.createJob = async (req, res) => {
     try {
         const data = {
             employerId: req.body.employerId,
-            jobTitle: req.body.jobTitle || null,
-            description: req.body.description || null,
-            requirements: req.body.requirements,
+            jobTitle: req.body.jobTitle,
+            jobdescription: req.body.jobdescription || null,
+            requirements: req.body.requirements || null,
             location: req.body.location,
-            salary: req.body.salary || null
+            salary: req.body.salary
         };
         const result = await Job.create(data);
-        res.status(201).json({ message: 'Job Posted successfully', jobId: result.insertId });
+        res.status(201).json({ message: 'Job posted successfully', jobId: result.insertId });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error posting Job' });
+        res.status(500).json({ message: 'Error posting job' });
     }
 };
 
-exports.getJobs = async (req, res) => {
+exports.getJobs= async (req, res) => {
     try {
         const jobs = await Job.findAll();
         res.status(200).json(jobs);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error retrieving jobs' });
-    }
-};
-
-exports.getJobById = async (req, res) => {
-    try {
-        const job = await Job.findById(req.params.id);
-        if (!job) {
-            return res.status(404).json({ message: 'job not found' });
-        }
-        res.status(200).json(job);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error retrieving job' });
-    }
-};
-
-exports.updateJob = async (req, res) => {
-    try {
-        const data = {
-            employerId: req.body.employerId,
-            jobTitle: req.body.jobTitle || null,
-            description: req.body.description || null,
-            requirements: req.body.requirements,
-            location: req.body.location,
-            salary: req.body.salary || null
-        };
-        const result = await Job.update(req.params.id, data);
-        if (result.affectedRows === 0) {
-            return res.status(404).json({ message: 'Job not found' });
-        }
-        res.status(200).json({ message: 'Job updated successfully' });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error updating job' });
-    }
-};
-
-exports.deleteJob = async (req, res) => {
-    try {
-        const result = await Job.delete(req.params.id);
-        if (result.affectedRows === 0) {
-            return res.status(404).json({ message: 'Job not found' });
-        }
-        res.status(200).json({ message: 'Job deleted successfully' });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error deleting job' });
     }
 };

@@ -5,8 +5,18 @@ const authController = require('./authController');
 
 router.post('/register-employer', authController.registerEmployer);
 router.get('/employers', authController.getEmployers);
-router.post('/post-job', authController.postJob);
-router.get('/jobs', authController.getJobs);
+//router.post('/post-job', authController.postJob);
+//router.get('/jobs', authController.getJobs);
+
+//const express = require('express');
+//const { createJob, getJobs } = require('../controllers/jobController');
+//const router = express.Router();
+
+router.post('/create', authController.createJob);
+//router.get('/all', authController.getJobs);
+
+//module.exports = router;
+
 
 router.post('/register-candidate', authController.registerCandidate);
 router.get('/', authController.getCandidates);

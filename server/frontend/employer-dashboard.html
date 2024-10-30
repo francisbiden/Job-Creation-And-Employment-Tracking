@@ -24,8 +24,8 @@
             <input type="number" id="employerId" name="employerId" required>
             <label for="jobTitle">Job Title:</label>
             <input type="text" id="jobTitle" name="jobTitle" required>
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea>
+            <label for="description">Job Description:</label>
+            <textarea id="jobDescription" name="description" required></textarea>
             <label for="requirements">Requirements:</label>
             <textarea id="requirements" name="requirements" required></textarea>
             <label for="location">Location:</label>
@@ -42,13 +42,13 @@
             const formData = {
                 employerId: document.getElementById('employerId').value,
                 jobTitle: document.getElementById('jobTitle').value,
-                description: document.getElementById('description').value,
+                jobDescription: document.getElementById('jobDescription').value,
                 requirements: document.getElementById('requirements').value,
                 location: document.getElementById('location').value,
                 salary: document.getElementById('salary').value
             };
             try {
-                const response = await fetch('auth/postjob', {
+                const response = await fetch('auth/create', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

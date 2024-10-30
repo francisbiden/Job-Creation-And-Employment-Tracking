@@ -51,6 +51,7 @@ app.get('/profile', (req, res) => {
     if (req.session.userId) {
         res.send(`Welcome, user ${req.session.userId}`);
     } else {
+    } else {
         res.status(401).send('Unauthorized');
     }
 });
@@ -58,6 +59,9 @@ app.get('/profile', (req, res) => {
 
 app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'frontend','index.html'))
+})
+app.get('/create',(req,res) => {
+    res.sendFile(path.join(__dirname,'frontend','employer-dashboard.html'))
 })
 
 
